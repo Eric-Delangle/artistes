@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+{% block body %}
+
+<!--Emplacement du titre et du slogan-->
+    <div class="jumbotron text-center" style="background-color:  grey">
+      {% if  app.user %}
+      <h1>Bienvenue <span >{{ app.user.firstName }}</span> sur l'avenue des artistes</h1>
+      {% else %}
+       <h1>Bienvenue sur l'avenue des artistes</h1>
+      {% endif %}
+        <p class="titre appel font slogan">La plateforme d'échange d'oeuvres d'art entre artistes. <i class="fas fa-paint-brush fa-2x fa_slogan blue_color"></i></p>
+        <p><img src=" {{ asset('images/marker3.png') }} " >Un seul membre <img src=" {{ asset('images/marker.png') }} " >Plusieurs membres <span>&nbsp; (cliquez sur le drapeau)</span></p>
+      </div>
+
+<!--fin titre et slogan-->
+
+<!--message d'invitation a s'enregistrer-->
+<div id="info">
+    <a href="{{ path('security_registration') }}">Vous devez être connecté(e) pour échanger</a>
+</div>
+<!-- MAP -->
+  <div id="map"></div>
+  <div id="infoMember">
+    <ul id="listeInfos" class="no_point">
+      <li><span id="nomMembre"></span></li>
+      <li><span id="categorie"></span></li>
+      <li><span id="ville"></span></li>
+      <li><span id="profil"></span></li>
+    </ul>
+</div>
+
+<!-- fin map -->
+
+      {% if app.user %}
+        <script>document.getElementById('inscription').style.display ='none';</script>
+        <script>document.getElementById('connexion').style.display ='none';</script>
+        <script>document.getElementById('admin').style.display ='none';</script>
+      {% else %}
+        <script>document.getElementById('inscription').style.display ='block';</script>
+        <script>document.getElementById('connexion').style.display ='block';</script>
+        <script>document.getElementById('admin').style.display ='none';</script>
+        <script>document.getElementById('deconnexion').style.display ='none';</script>
+        <script>document.getElementById('espace_membre').style.display ='none';</script>
+      {% endif %}
+     {% if is_granted('ROLE_ADMIN') %}
+        <script>document.getElementById('admin').style.display ='block';</script>
+        <script>document.getElementById('map').style.display ='block';</script>
+      {% endif %} 
+        <script>document.getElementById('infoMember').style.display ='none';</script>
+
+        <script src="https://maps.googleapis.com/maps/api/"></script>
+        <script src="http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false"></script>
+         <script type="text/javascript" src="{{ asset('/js/app.js') }}"/></script>
+         <script type="text/javascript" src="http://jawj.github.io/OverlappingMarkerSpiderfier/bin/oms.min.js"/></script>
+        <script>let main = new Main();</script>
+       <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+ {% endblock %}

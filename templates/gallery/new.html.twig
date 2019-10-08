@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre nouvelle galerie{% endblock %}
+
+{% block body %}
+<div class ="container">
+    <h1 class="center">Créer une galerie</h1>
+
+    {{ include('gallery/_form.html.twig') }}
+
+    <a class="btn btn-info" href="{{ path('gallery_index', {'id': app.user.id}) }}">Retour à la liste de vos galeries</a>
+    </div>
+{% endblock %}

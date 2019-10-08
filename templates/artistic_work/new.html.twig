@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle image{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <h1 class="center">Ajouter une image</h1>
+
+   
+    {{ include('artistic_work/_form.html.twig') }}
+
+    <a class="btn btn-info" href="{{ path('gallery_edit', {'id': app.user.id}) }}">Retour à la galerie</a>
+</div>
+  
+{% endblock %}

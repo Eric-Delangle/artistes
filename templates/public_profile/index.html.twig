@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les membres{% endblock %}
+
+{% block body %}
+<div class="container center font"> 
+  <h1 class="center">Liste des membres</h1>
+  <br>
+    <table border class="center">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Ville</th>
+                    <th>Enregistré le</th>
+                    <th>Catégorie(s)</th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td class="tr_pad">{{ user.email }}</td>
+                    <td class="tr_pad">{{ user.firstName|title }}</td>
+                    <td class="tr_pad">{{ user.lastName|title }}</td>
+                    <td class="tr_pad">{{ user.location|title }}</td>
+                    <td class="tr_pad">{{ user.registeredAt ? user.registeredAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td class="tr_pad">
+                        {% for categorie in user.categories %}
+                            <p>{{ categorie.name }}</p>
+                        {% endfor %}     
+                    </td>
+                    <td class="tr_pad"><a class="btn btn-info" href="{{ path('public_show', {'id': user.id}) }}">Son profil</a></td>
+                    
+                
+                
+                
+            {% else %}
+                <tr>
+                    <td colspan="9">Pas d'utilisateur enregistré.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+</div>
+{% endblock %}

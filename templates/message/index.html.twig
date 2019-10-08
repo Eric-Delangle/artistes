@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block body %}
+    <h1 class="center titre">Vos messages {{ app.user.firstName|title }}</h1>
+    <br>
+<div class="container font"> 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Expéditeur</th>
+                <th>Titre</th>
+                <th>Message</th>
+                <th>Date/heure</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+            <tr>
+                
+                <td>{{ message.expediteur.firstName }}</td>
+                
+                <td>{{ message.titre }}</td>
+                <td>{{ message.message }}</td>
+                <td>{{ message.postedAt ? message.postedAt|date('d-m-Y- H:i') : '' }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('message_show', {'id': message.id}) }}">Lire</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas de messages reçus.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-success" href="{{ path('message_new', {'id': app.user.id}) }}">Ecrire un message</a>
+
+    <!-- div des reponses -->
+    
+    <h1 class="center">Vos conversations</h1>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Expéditeur</th>
+                <th>Message</th>
+                <th>Date/heure</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in reponse %}
+            <tr>
+                
+                <td>{{ message.expediteur.firstName }}</td>
+                
+                <td>{{ message.message }}</td>
+                <td>{{ message.postedAt ? message.postedAt|date('d-m-Y- H:i') : '' }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('reponse_showRep', {'id': message.id}) }}">Lire</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas de réponses reçues.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+<script>document.getElementById('pas_vu').style.display ='block';</script>
+{% endblock %}

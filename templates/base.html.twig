@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="keywords" content="artiste, échange, art, galerie, peinture, modelage, dessin, sculpture, art numérique, photographie" />
+        <title>{% block title %}L'avenue des artistes{% endblock %}</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <!-- CSS PERSO -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}"/>
+        
+        <!-- CSS ET JS BOOTSTRAP-->
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+       {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+       
+        <div id="menu" class="nav_perso center header-nav">
+             <!--burger-->
+      
+             <input id="burger" type="checkbox" />
+             <label class="lab" for="burger">
+                 <span></span>
+                 <span></span>
+                 <span></span>
+             </label>
+           
+         <!--fin burger-->
+                <a class="navbar-brand font" id="pas_vu" href="{{ path('home') }}"><span class="sea">Accueil</span></a>
+            <nav class="navbar navbar-expand-lg navbar-default nav_a">
+                
+                
+                  
+                <div class="center" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto center font">
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('explain') }}"> Comment ça marche ?</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav_a" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-store-alt"></i> Galeries</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  
+                        <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 2}) }}">Peinture</a>
+                        <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 1}) }}">Dessin</a>
+                        <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 3}) }}">Sculpture</a>
+                        <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 4}) }}">Modelage</a>
+                        <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 5}) }}">Art numérique</a>
+                        <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 6}) }}">Photographie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="admin" href="{{ path('admin_gestion') }}" tabindex="-1" aria-disabled="true"><i class="fas fa-edit"></i> Administration</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" id="inscription" href="{{ path('security_registration') }}" tabindex="-1" aria-disabled="true"><i class="fas fa-door-open"></i> Inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="connexion" href="{{ path('security_login') }}" tabindex="-1" aria-disabled="true"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="espace_membre" href="{{ path('member') }}" tabindex="-1" aria-disabled="true"><i class="fas fa-door-open"></i> Votre espace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="deconnexion" href="{{ path('security_logout') }}" tabindex="-1" aria-disabled="true"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                    </li>
+                </div>
+            </div>
+        </div>
+       
+         {% block body %}{% endblock %}
+         <footer class="foot">
+            <div id="mentions" class="jumbotron text-center font mentions" style="background-color:  grey">
+                <p class=""><a href="{{ asset('images/CGU.pdf') }}">Mentions légales</a></p>
+                <p><i class="far fa-envelope"></i><a href="{{ path('message_newUserMess', {'id': 6  }) }}"> Nous contacter</a></p>
+                <p>Copyright ©2019 tous droits réservés</p>
+              </div>
+         </footer>
+         <script src="{{ asset('build/app.js') }}"></script>
+         <script>document.getElementById('info').style.display ='none';</script> 
+        {% block javascripts %}{% endblock %}
+        {% if app.user %}
+            <script>document.getElementById('inscription').style.display ='none';</script>
+            <script>document.getElementById('connexion').style.display ='none';</script>
+            <script>document.getElementById('admin').style.display ='none';</script>
+        {% else %}
+            <script>document.getElementById('inscription').style.display ='block';</script>
+            <script>document.getElementById('connexion').style.display ='block';</script>
+            <script>document.getElementById('admin').style.display ='none';</script>
+            <script>document.getElementById('deconnexion').style.display ='none';</script>
+            <script>document.getElementById('espace_membre').style.display ='none';</script>
+            <script> 
+            // apparition du message d'inscription au bout de 5 secondes
+
+                window.onload = ()=> {
+                    setTimeout(()=> {
+                    document.getElementById("info").style.display = "block";
+                    }, 5000);
+                }
+            </script>
+        {% endif %}
+        
+        {% if is_granted('ROLE_ADMIN') %}
+            <script>document.getElementById('admin').style.display ='block';</script>
+            <script>document.getElementById('map').style.display ='block';</script> 
+        {% endif %} 
+     
+    </body>
+</html>
+

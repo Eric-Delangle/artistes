@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+<br>
+<div class="container font"> 
+    
+        {% for user in users %}
+       <h1 class="center titre">Profil de {{ user.firstName|title }}</h1>
+       
+       <p class="center"><span class="bleu">Avatar: </span><img src="{{ asset(['images/artisticWorks/', user.avatar]|join) }}" class="images" ></p>
+       <br>
+       <div class="profil"> 
+            <div> 
+                <p><span class="bleu">Email: </span> {{ user.email }}</p>
+               
+            
+                <p><span class="bleu">Prénom: </span>{{ user.firstName|title }}</p>
+             
+            
+                <p><span class="bleu">Nom: </span>{{ user.lastName|title }}</p>
+                
+            
+                <p><span class="bleu">Ville: </span>{{ user.location|title }}</p>
+            </div>
+           <br>
+           <div> 
+                <p><span class="bleu">Catégorie(s):</span></p>
+                    <p>{% for categorie in user.categories %}
+                        {{ categorie.name }}
+                        {% endfor %}     
+                    </p>
+           </div>
+        </div>
+        <p class="center"><span class="bleu">Galerie(s):</span></p>
+        <br>
+                <div class="profil_galeries"> 
+                    
+                    {% if gallery %}
+                        {% for gallerie in gallery %}
+                            <p>{{ gallerie.name }}</p>
+                            <a class="btn btn-info " href="{{ path('gallery_showUser', {'id': gallerie.id}) }}">Voir la galerie</a>
+                            {% endfor %}
+                            <br>
+                        {% else %}
+                        <p>Ce membre n'a pas encore de galerie.</p>
+                    {% endif %}   
+                        </p>
+                </div>
+                <br>
+            
+                
+                <p class="center"><a class="btn btn-success" href="{{ path('message_newUserMess', {'id': user.id}) }}">Envoyer un message</a></p>  
+        {% endfor %}   
+</div>
+<script>document.getElementById('pas_vu').style.display ='block';</script>
+{% endblock %}

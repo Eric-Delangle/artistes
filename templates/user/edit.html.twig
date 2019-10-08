@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+<div class="container font"> 
+    <h1 class="center titre">Modification de vos informations</h1>
+<div class="container liens_crud"> 
+    {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('member') }}" class="btn btn-info">retour dans votre espace</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+    </div>
+</div>
+<script>document.getElementById('pas_vu').style.display ='block';</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mise à jour de l'images{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="center">Mise à jour de votre image</h1>
+
+    {{ include('artistic_work/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a class="btn btn-primary" href="{{ path('gallery_index', {'id':app.user.id}) }}">Retour à la liste</a>
+
+</div>
+   
+{% endblock %}

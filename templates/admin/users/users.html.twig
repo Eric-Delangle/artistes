@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des utilisateurs{% endblock %}
+
+{% block body %}
+<div class="container font">
+    <h1 class="center">Tableau des utilisateurs</h1>
+<br>
+    <table border style="text-align:center;">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Ville</th>
+                <th>Enregistré le</th>
+                <th>Niveau</th>
+                <th>Catégorie(s)</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td class="tr_pad">{{ user.email }}</td>
+                <td class="tr_pad">{{ user.firstName }}</td>
+                <td class="tr_pad">{{ user.lastName }}</td>
+                <td class="tr_pad">{{ user.location }}</td>
+                <td>{{ user.registeredAt ? user.registeredAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.niveau }}</td>
+                <td>
+                    {% for categorie in user.categories %}
+                        <p>{{ categorie.name }}</p>
+                    {% endfor %}     
+                </td>
+                
+               
+              
+                <td>
+                   
+                    <a class="btn btn-success" href="{{ path('user_editUser', {'id': user.id}) }}">Modifier</a>
+                    <form method="post" action="{{ path('user_deleteUser', {'id': user.id}) }}" style="display: inline-block" onsubmit="return confirm('Voulez vous vraiment supprimer ce membre?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                        <button class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Pas d'utilisateur enregistré.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<br>
+ <div class="container"style="text-align:center" >
+        <p>
+             <a class="btn btn-info" href="{{ path('admin_gestion') }}">Retour à l'administration</a>
+        </p>
+    </div>
+<script>document.getElementById('inscription').style.display ='none';</script>
+<script>document.getElementById('connexion').style.display ='none';</script>
+<script>document.getElementById('deconnexion').style.display ='block';</script>
+<script>document.getElementById('espace_membre').style.display ='block';</script>
+<script>document.getElementById('admin').style.display ='none';</script>
+{% endblock %}

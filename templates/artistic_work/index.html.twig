@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArtisticWork index{% endblock %}
+
+{% block body %}
+    <h1>ArtisticWork index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Slug</th>
+                <th>Name</th>
+                <th>CreatedAt</th>
+                <th>Picture</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artistic_work in artistic_works %}
+            <tr>
+                <td>{{ artistic_work.id }}</td>
+                <td>{{ artistic_work.slug }}</td>
+                <td>{{ artistic_work.name }}</td>
+                <td>{{ artistic_work.createdAt ? artistic_work.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ artistic_work.picture }}</td>
+                <td>
+                    <a href="{{ path('artistic_work_show', {'id': artistic_work.id}) }}">show</a>
+                    <a href="{{ path('artistic_work_edit', {'id': artistic_work.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('artistic_work_new') }}">Create new</a>
+{% endblock %}
