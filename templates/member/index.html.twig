@@ -4,7 +4,7 @@
 <!--Emplacement du titre et du slogan-->
     <div class="container center">
       <h1 class="titre">Bienvenue <span >{{ app.user.firstName|title }}</span> dans votre espace personnel.</h1>
-      <div><img src="{{ asset(['images/artisticWorks/', app.user.avatar]|join) }}" class="images" ></div>
+      <div><img src="{{ asset(['images/artisticWorks/', app.user.avatar]|join) }}" class="images" alt="avatar"></div>
       <p class="font">Vous êtes inscrit dans la (les) catégorie(s) suivante(s):</p>
     
       <p class="font"> 

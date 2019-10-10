@@ -10,7 +10,7 @@
        <h1>Bienvenue sur l'avenue des artistes</h1>
       {% endif %}
         <p class="titre appel font slogan">La plateforme d'échange d'oeuvres d'art entre artistes. <i class="fas fa-paint-brush fa-2x fa_slogan blue_color"></i></p>
-        <p><img src=" {{ asset('images/marker3.png') }} " >Un seul membre <img src=" {{ asset('images/marker.png') }} " >Plusieurs membres <span>&nbsp; (cliquez sur le drapeau)</span></p>
+        <p><img src=" {{ asset('images/marker3.png') }} " alt="drapeau_bleu">Un seul membre <img src=" {{ asset('images/marker.png') }} " alt="drapeau_vert">Plusieurs membres <span>&nbsp; (cliquez sur le drapeau)</span></p>
       </div>
 
 <!--fin titre et slogan-->
@@ -49,10 +49,10 @@
       {% endif %} 
         <script>document.getElementById('infoMember').style.display ='none';</script>
 
-        <script src="https://maps.googleapis.com/maps/api/"></script>
-        <script src="http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false"></script>
-         <script type="text/javascript" src="{{ asset('/js/app.js') }}"/></script>
-         <script type="text/javascript" src="http://jawj.github.io/OverlappingMarkerSpiderfier/bin/oms.min.js"/></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+        <script src="https://maps.googleapis.com/maps/api/geocode/json?address=&sensor=false"></script>
+         <script src="{{ asset('/js/app.js') }}"></script>
+         <script src="https://jawj.github.io/OverlappingMarkerSpiderfier/bin/oms.min.js"></script>
         <script>let main = new Main();</script>
        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
  {% endblock %}

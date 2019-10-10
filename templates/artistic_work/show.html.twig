@@ -4,7 +4,8 @@
 
 {% block body %}
     <h1 class="center">Votre image</h1>
-<div class="container">
+    <br>
+<div class="container font">
     <table class="table">
         <tbody>
             <tr>
@@ -21,12 +22,12 @@
             </tr>
             <tr>
                
-                <td ><img src=" {{ asset(['images/artisticWorks/', artistic_work.picture]|join) }} " class="images" ></td>
+                <td ><img src=" {{ asset(['images/artisticWorks/', artistic_work.picture]|join) }} " class="images" alt="oeuvre"></td>
             </tr>
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('gallery_index', {'id': app.user.id}) }}) }}">Retour à l'édition</a>
+    <a class="btn btn-primary" href="{{ path('gallery_index', {'id': app.user.id}) }}">Retour à vos galeries</a>
 
     <a class="btn btn-success" href="{{ path('artistic_work_edit', {'id': artistic_work.id}) }}">Modifier ses informations</a>
 

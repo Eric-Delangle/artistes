@@ -23,6 +23,7 @@ button {
   width: 100%;
     height: 100px;
 }
+
 .font {
   font-size: 1.5em;
 }
@@ -97,57 +98,58 @@ body a:hover {
 width: 300px;
 height: auto;
 }
+
 #map {
     width: 100%;
     height: 800px;
-  }
-  .center {
-    text-align: center;
-    margin: 0 auto;
-  }
+}
 
-  .align_image {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
 
-  /* infos membre sur la carte */
-  #infoMember {
-    font-family: sans-serif,arial;
-    position: absolute;
-    width: 25%;
-    height: auto;
-    border-radius: 10px 10px 10px 10px;
-    background-color: grey;
-    border: 2.5px solid #ffff;
-    color: #ffff;
-    left: 35px;
-    top: 700px;
-    display: none;
-    z-index: 10;
-  }
+.align_image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
-  .no_point {
-    list-style: none;
-    margin: 10px auto;
-  }
+/* infos membre sur la carte */
+#infoMember {
+  font-family: sans-serif,arial;
+  position: absolute;
+  width: 25%;
+  height: auto;
+  border-radius: 10px 10px 10px 10px;
+  background-color: grey;
+  border: 2.5px solid #ffff;
+  color: #ffff;
+  left: 35px;
+  top: 700px;
+  display: none;
+  z-index: 10;
+}
+
+.no_point {
+  list-style: none;
+  margin: 10px auto;
+}
   
-  #pas_vu {
-    display: none
-  }
+#pas_vu {
+  display: none;
+}
 
-  .liens_crud {
-    justify-content: space-around;
-  }
+.liens_crud {
+  justify-content: space-around;
+}
 
-  /* affichage des images dans les galeries */
+/* affichage des images dans les galeries */
 .flex {
- 
   display: flex;
   flex-wrap: wrap;
- width: 70%;
- height: auto;
+  width: 70%;
+  height: auto;
 }
 
 .titres {
@@ -161,62 +163,58 @@ height: auto;
   margin-top: 40px;
 }
 
-  .blue_color {
-    color: #0b88db;
-    text-shadow: 10px 10px 3px rgb(82, 80, 80);
-  }
+.blue_color {
+  color: #0b88db;
+  text-shadow: 10px 10px 3px rgb(82, 80, 80);
+}
 
-  .bleu {
-    color: #0b88db;
-  }
+.bleu {
+  color: #0b88db;
+}
 
-  #mentions a:hover {
-    color: #000000;
-    text-decoration: none;
-  }
+#mentions a:hover {
+  color: #000000;
+  text-decoration: none;
+}
 
-  #mentions a {
-    margin: 30px auto;
-    text-decoration: none;
-    color: #ffffff;
-  }
+#mentions a {
+  margin: 30px auto;
+  text-decoration: none;
+  color: #ffffff;
+}
 
-  .mentions p {
-    color: #ffffff;
-  }
+.mentions p {
+  color: #ffffff;
+}
 
-  .tr_pad {
-    padding: 0 20px;
-  }
+.tr_pad {
+  padding: 0 20px;
+}
 
-  .foot {
-    margin: 20px auto;
-  }
+.foot {
+  margin: 20px auto;
+}
 
-  .profil {
-    display: flex;
-    justify-content: space-around;
-  }
+.profil {
+  display: flex;
+  justify-content: space-around;
+}
 
-  .profil_galeries {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  .galerie {
-    justify-content: space-around;
-  }
+.profil_galeries {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 
-  /* --  ==== MEDIAQUERIES ====  -- */
+.galerie {
+  justify-content: space-around;
+}
+
+/* --  ==== MEDIAQUERIES ====  -- */
 
 
 @media all and (max-width: 1024px) {  /* ipad */
-/*
-  .jumbotron {
-    margin-top: 90px;
-  }
-*/
 
   .flex {
    display: flex;
@@ -236,7 +234,7 @@ height: auto;
     background-color: rgb(69, 126, 231);
     text-align: center;
     z-index: 1;
-    top: 350px;
+    top: 400px;
     left: 150px;
   }
   
@@ -342,7 +340,7 @@ height: auto;
   #pas_vu {
     margin-top: 10px;
   }
-  
+}
   @media all and (max-device-width: 480px) {  /* smartphone */
    
   input:checked ~ nav {
@@ -357,7 +355,7 @@ height: auto;
   #info {
     display: none;
     position: absolute;
-    width: 60%;
+    width: 80%;
     height: 70px;
     line-height: 4;
     font-family: milkshake, arial, time;
@@ -366,8 +364,19 @@ height: auto;
     background-color: rgb(69, 126, 231);
     text-align: center;
     z-index: 1;
-    top: 420px;
-    left: 90px;
+    top: 470px;
+    left: 40px;
   }
+
+  #map {
+    width: 90%;
+    height: 500px;
+    margin: 0 auto;
+}
+
+/* infos membre sur la carte */
+#infoMember {
+  padding: 0 auto;
+}
 }
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYXBwLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG9DQUFvQztBQUN4QyIsImZpbGUiOiJhcHAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI0MSwgMjEzLCAxNzUpO1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ==*/

@@ -38,7 +38,7 @@
                 <!-- l'array sur lequel je dois boucler c'est gallery.artisticWorks -->
                 {% for artisticWork in gallerie.artisticWorks %}
                 
-                    <p><img src=" {{ asset(['images/artisticWorks/', artisticWork.picture]|join) }} " class="images" ></p>
+                    <p><img src=" {{ asset(['images/artisticWorks/', artisticWork.picture]|join) }} " class="images" alt="oeuvre"></p>
                     <br>
                     <p>{{ artisticWork.name|title }}:</p>
                     <p>{{ artisticWork.description }}</p>
