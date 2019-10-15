@@ -26,6 +26,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash('success', 'Votre profil a bien été mis à jour!');
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
             $this->getDoctrine()->getManager()->flush();

@@ -59,8 +59,6 @@ class GalleryController extends AbstractController
     public function new(Request $request, User $user, CategoryRepository $catRepo): Response
     {
         $gallery = new Gallery();
-      //  $cat = $catRepo->findBy(['users' => $user]);
-      //  dump($cat);
         $form = $this->createForm(GalleryType::class, $gallery);
         $form->handleRequest($request);
 
@@ -113,22 +111,6 @@ class GalleryController extends AbstractController
      
          'gallery'=>$gallery,
         ]);
-    }
-
-
-    /**
-     * @Route("/user/delete/{id}", name="gallery_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Gallery $gallery, User $user): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$gallery->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($gallery);
-            $entityManager->flush();
-            $this->addFlash('success', 'Votre galerie a bien été supprimée!');
-        }
-
-        return $this->redirectToRoute('member');
     }
     
 }

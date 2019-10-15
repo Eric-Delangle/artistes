@@ -27,7 +27,7 @@
                     <td>{{ gallery.name }}</td>
                     <td>         
                         <a class=" btn btn-info" href="{{ path('gallery_edit', {'id': gallery.id}) }}">Gérer cette galerie</a>
-                        {{ include('gallery/_delete_form.html.twig') }}
+                        
                     </td>
                 </tr>
                 {% endfor %}
