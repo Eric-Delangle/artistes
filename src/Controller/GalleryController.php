@@ -117,9 +117,9 @@ class GalleryController extends AbstractController
 
 
     /**
-     * @Route("/delete/{id}", name="gallery_delete", methods={"DELETE"})
+     * @Route("/user/delete/{id}", name="gallery_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Gallery $gallery): Response
+    public function delete(Request $request, Gallery $gallery, User $user): Response
     {
         if ($this->isCsrfTokenValid('delete'.$gallery->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
