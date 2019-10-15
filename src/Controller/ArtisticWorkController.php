@@ -34,7 +34,6 @@ class ArtisticWorkController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->addFlash('success', 'Votre image a bien été ajoutée!');
             $artisticWork->setCreatedAt(new \DateTime());
-          //  $artisticWork->setCategory($category);
             $artisticWork->setGallery($gallery);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($artisticWork);

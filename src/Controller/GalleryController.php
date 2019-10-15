@@ -7,6 +7,7 @@ use App\Entity\Gallery;
 use App\Entity\Category;
 use App\Form\GalleryType;
 use App\Entity\ArtisticWork;
+use App\Form\GalleryNewType;
 use App\Repository\UserRepository;
 use App\Repository\GalleryRepository;
 use App\Repository\CategoryRepository;
@@ -55,9 +56,11 @@ class GalleryController extends AbstractController
      /**
      * @Route("/new/{id}", name="gallery_new", methods={"GET","POST"}, requirements={"id": "\d+"})
      */
-    public function new(Request $request, User $user): Response
+    public function new(Request $request, User $user, CategoryRepository $catRepo): Response
     {
         $gallery = new Gallery();
+      //  $cat = $catRepo->findBy(['users' => $user]);
+      //  dump($cat);
         $form = $this->createForm(GalleryType::class, $gallery);
         $form->handleRequest($request);
 
@@ -112,8 +115,9 @@ class GalleryController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/gallery/{id}", name="gallery_delete", methods={"DELETE"})
+     * @Route("/delete/{id}", name="gallery_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Gallery $gallery): Response
     {
@@ -124,7 +128,7 @@ class GalleryController extends AbstractController
             $this->addFlash('success', 'Votre galerie a bien été supprimée!');
         }
 
-        return $this->redirectToRoute('gallery_index');
+        return $this->redirectToRoute('member');
     }
     
 }

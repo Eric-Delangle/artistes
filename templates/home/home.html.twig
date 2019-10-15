@@ -43,14 +43,12 @@
         <script>document.getElementById('deconnexion').style.display ='none';</script>
         <script>document.getElementById('espace_membre').style.display ='none';</script>
       {% endif %}
-     {% if is_granted('ROLE_ADMIN') %}
+      {% if is_granted('ROLE_ADMIN') %}
         <script>document.getElementById('admin').style.display ='block';</script>
         <script>document.getElementById('map').style.display ='block';</script>
       {% endif %} 
         <script>document.getElementById('infoMember').style.display ='none';</script>
-
-        <script src="https://maps.googleapis.com/maps/api/js?key="></script>
-        <script src="https://maps.googleapis.com/maps/api/geocode/json?address=&sensor=false"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZDRnjKMHSjcceK50zBn9qh9i2VK-5ee0"></script>
          <script src="{{ asset('/js/app.js') }}"></script>
          <script src="https://jawj.github.io/OverlappingMarkerSpiderfier/bin/oms.min.js"></script>
         <script>let main = new Main();</script>

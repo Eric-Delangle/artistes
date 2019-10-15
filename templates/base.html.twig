@@ -14,7 +14,7 @@
         
         <!-- CSS ET JS BOOTSTRAP-->
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+       
        {% block stylesheets %}{% endblock %}
        <!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-97383317-4"></script>
@@ -48,8 +48,6 @@
                 <a class="navbar-brand font" id="pas_vu" href="{{ path('home') }}"><span class="sea">Accueil</span></a>
             <nav class="navbar navbar-expand-lg navbar-default nav_a">
                 
-                
-                  
                 <div class="center" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto center font">
                    
@@ -60,9 +58,8 @@
                         <a class="nav-link dropdown-toggle nav_a" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-store-alt"></i> Galeries</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  
-                        <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 2}) }}">Peinture</a>
                         <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 1}) }}">Dessin</a>
+                        <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 2}) }}">Peinture</a>
                         <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 3}) }}">Sculpture</a>
                         <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 4}) }}">Modelage</a>
                         <a class="dropdown-item liens" href="{{ path('gallery_category', {'id': 5}) }}">Art numérique</a>
@@ -99,6 +96,7 @@
                 <p>Copyright ©2019 tous droits réservés</p>
               </div>
          </footer>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
          <script src="{{ asset('build/app.js') }}"></script>
          <script>document.getElementById('info').style.display ='none';</script> 
         {% block javascripts %}{% endblock %}

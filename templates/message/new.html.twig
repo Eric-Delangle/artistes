@@ -9,7 +9,7 @@
     <div class="container font"> 
         {{ include('message/_form.html.twig') }}
 
-        <a class="btn btn-info" href="{{ path('message_index', {'id': app.user.id}) }}">Retour à vos message</a>
+        <a class="btn btn-info" href="{{ path('message_index', {'id': app.user.id}) }}">Vos messages</a>
     </div>
 {% else %}
     <div class="container font center"> 
