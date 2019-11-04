@@ -23,9 +23,10 @@ class MessageType extends AbstractType
             
             ->add('destinataire', EntityType::class, [ 
                 'class' => User::class,
-                 'choice_label' => 'firstName',
-                 //'multiple' => true,
-                 'expanded' => true
+                'choice_label' => function($user) {
+                    return $user->getfirstName() . " " . $user->getlastName() . ".  " . $user->getLocation();
+                 },
+                'expanded' => true
               ]) 
         ;
     }

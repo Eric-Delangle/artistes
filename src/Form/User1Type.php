@@ -17,11 +17,22 @@ class User1Type extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('password', PasswordType::class,['required'=>false])
-            ->add('password_verify', PasswordType::class,['required'=>false])
+            ->add('password', PasswordType::class, [
+                'attr' => [
+                    'required' => false,
+                    'style' => 'placeho',
+                ]
+            ])
+            ->add('password_verify', PasswordType::class, [
+                'attr' => [
+                    'required' => false,
+                    'style' => 'placeho',
+                ] 
+            ])
             ->add('firstName')
             ->add('lastName')
             ->add('location')
+            ->add('description2')
             ->add('categories', EntityType::class, [ 
                 'class' => Category::class,
                  'choice_label' => 'name',

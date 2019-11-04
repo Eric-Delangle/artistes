@@ -15,6 +15,7 @@
                     <th>Ville</th>
                     <th>Enregistré le</th>
                     <th>Catégorie(s)</th>
+                    <th>A propos</th>
                     
                     
                 </tr>
@@ -32,7 +33,11 @@
                             <p>{{ categorie.name }}</p>
                         {% endfor %}     
                     </td>
-                    <td class="tr_pad"><a class="btn btn-info" href="{{ path('public_show', {'id': user.id}) }}">Son profil</a></td>
+                    <td>
+                        <p class="font">A propos de moi: </p>
+                        <p class="font">{{ user.description2 }}</p>
+                    </td>
+                    <td class="tr_pad"><a class="btn btn-info placeho" href="{{ path('public_show', {'id': user.id}) }}">Son profil</a></td>
                     
                 
                 

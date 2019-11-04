@@ -26,7 +26,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->addFlash('success', 'Votre profil a bien été mis à jour!');
+            $this->addFlash('success', 'Votre profil a bien été mis à jour !');
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
             $this->getDoctrine()->getManager()->flush();
@@ -46,11 +46,12 @@ class UserController extends AbstractController
     public function delete(Request $request, User $user): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+            $this->addFlash('success', 'Votre compte a bien été supprimé !');
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('home');
     }
 }

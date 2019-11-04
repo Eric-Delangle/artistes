@@ -50,8 +50,8 @@ class AdminUserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $hash = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($hash);
+           // $hash = $encoder->encodePassword($user, $user->getPassword());
+           // $user->setPassword($hash);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_index');

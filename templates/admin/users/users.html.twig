@@ -3,7 +3,7 @@
 {% block title %}Index des utilisateurs{% endblock %}
 
 {% block body %}
-<div class="container font">
+<div class="container placeho">
     <h1 class="center">Tableau des utilisateurs</h1>
 <br>
     <table border style="text-align:center;">
@@ -38,11 +38,11 @@
               
                 <td>
                    
-                    <a class="btn btn-success" href="{{ path('user_editUser', {'id': user.id}) }}">Modifier</a>
+                    <a class="btn btn-success placeho" href="{{ path('user_editUser', {'id': user.id}) }}">Modifier</a>
                     <form method="post" action="{{ path('user_deleteUser', {'id': user.id}) }}" style="display: inline-block" onsubmit="return confirm('Voulez vous vraiment supprimer ce membre?');">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
-                        <button class="btn btn-danger">Supprimer</button>
+                        <button class="btn btn-danger placeho">Supprimer</button>
                     </form>
                 </td>
             </tr>
@@ -57,7 +57,7 @@
 <br>
  <div class="container"style="text-align:center" >
         <p>
-             <a class="btn btn-info" href="{{ path('admin_gestion') }}">Retour à l'administration</a>
+             <a class="btn btn-info placeho" href="{{ path('admin_gestion') }}">Retour à l'administration</a>
         </p>
     </div>
 <script>document.getElementById('inscription').style.display ='none';</script>

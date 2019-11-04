@@ -28,11 +28,21 @@
            <div> 
                 <p><span class="bleu">Catégorie(s):</span></p>
                     <p>{% for categorie in user.categories %}
+                            {% if loop.first != true %}
+                            ,
+                            {% endif %}
                         {{ categorie.name }}
                         {% endfor %}     
                     </p>
            </div>
         </div>
+        {% if user.description2 %}
+        <div>            
+            <p class="center bleu">A propos de moi: </p>
+            <p class="center">{{ user.description2 }}</p>
+        </div>
+        {% endif %}
+        <br>
         <p class="center"><span class="bleu">Galerie(s):</span></p>
         <br>
                 <div class="profil_galeries"> 
@@ -40,7 +50,7 @@
                     {% if gallery %}
                         {% for gallerie in gallery %}
                             <p>{{ gallerie.name }}</p>
-                            <a class="btn btn-info " href="{{ path('gallery_showUser', {'id': gallerie.id}) }}">Voir la galerie</a>
+                            <a class="btn btn-info placeho" href="{{ path('gallery_showUser', {'id': gallerie.id}) }}">Voir la galerie</a>
                             {% endfor %}
                             <br>
                         {% else %}
@@ -51,7 +61,7 @@
                 <br>
             
                 
-                <p class="center"><a class="btn btn-success" href="{{ path('message_newUserMess', {'id': user.id}) }}">Envoyer un message</a></p>  
+                <p class="center"><a class="btn btn-success placeho" href="{{ path('message_newUserMess', {'id': user.id}) }}">Envoyer un message</a></p>  
         {% endfor %}   
 </div>
 <script>document.getElementById('pas_vu').style.display ='block';</script>

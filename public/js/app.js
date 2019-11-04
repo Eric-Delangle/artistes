@@ -34,6 +34,15 @@ class Main
     this.map.initMap();
   }
 }
+/*
+class MainMess
+ {
+  constructor() {
+    this.messag = new Mess();
+    this.messag.signalMess();
+  }
+}
+*/
 // création de la classe Gmap
 class Gmap 
 { 
@@ -43,6 +52,7 @@ class Gmap
     this.nomMembre = document.getElementById('nomMembre');
     this.ville = document.getElementById('ville');
     this.categorie = document.getElementById('categorie');
+    this.message = document.getElementById('message');
     
   }
   
@@ -76,6 +86,8 @@ class Gmap
               // methode pour mettre les premières lettres en majuscule
               String.prototype.ucFirst=function(){return this.substr(0,1).toUpperCase()+this.substr(1);}
           
+              let mess = req[i]["messages"];
+              console.log(mess);
               let ville =req[i]["location"];
               let Ville = ville.ucFirst();
               let prenom = req[i]["firstName"];
@@ -145,18 +157,53 @@ class Gmap
       });
     }
 }
+
+// tests
+/*
+class Mess
+{
+  
+  constructor() {
+    this.infoM = document.getElementById("infoMess");
+    this.user = user;
+  }
+   
+      signalMess() { 
+        $(document).ready(function(){
+         
+          $.ajax({
+              url : 'members.json',
+              type : 'GET',
+              dataType : 'json',
+        
+              success:function(response){
+                console.log(response);
+
+                $.each(response, function(i) {
+          
+                  let mess = response[i]["messages"];
+                  console.log(mess[0]["id"]);
+                  console.log(user);
+                  console.log(mess[0][i]['message']);
+                  
+                    if(mess[0][i]['message'].length >= 1) { 
+                      document.getElementById("infoMess").style.display = "block";
+                    } 
+            });
+          }        
+        });
+    })
+  }
+}
+*/
+
+
  /*
   const markerCluster = new MarkerClusterer(map, markers,{
     maxZoom: 15,
     imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
   });// fin de ma variable de regroupement de markers
-  minClusterZoom = 14
-  markerCluster.setMaxZoom(minClusterZoom); 
-
-  google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster) { 
-    map.fitBounds(cluster.getBounds()); // Fit the bounds of the cluster clicked on 
-      if(map.getZoom() > minClusterZoom+1) // If zoomed in past 15 (first level without clustering), zoom out to 15 
-      map.setZoom(minClusterZoom+1); 
-}); 
 */
+
+
 

@@ -92,10 +92,27 @@
          <footer class="foot">
             <div id="mentions" class="jumbotron text-center font mentions" style="background-color:  grey">
                 <p class=""><a href="{{ asset('images/CGU.pdf') }}">Mentions légales</a></p>
-                <p><i class="far fa-envelope"></i><a href="{{ path('message_newUserMess', {'id': 6  }) }}"> Nous contacter</a></p>
+                <p><i class="far fa-envelope"></i><a href="{{ path('message_newUserMess', {'id': 1  }) }}"> Nous contacter</a></p>
+                <h5 class="mentions">Retrouvez nous sur Facebook</h5>
+                <ul style="list-style: none;">
+                    <li>
+                        <a href="https://www.facebook.com/Avenue-des-artistes-105634470862223/">
+                            <span class="fa-stack fa-2x fond_vert">
+                                <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class=""><a href="http://www.ericdelangle.fr">Besoin d'un site ?</a></p>
                 <p>Copyright ©2019 tous droits réservés</p>
               </div>
          </footer>
+        <!-- Charge React -->
+            <!-- Remarque : pour le déploiement, remplacez "development.js"
+                par "production.min.js" -->
+         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+         <!-- fin chargement React -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
          <script src="{{ asset('build/app.js') }}"></script>
          <script>document.getElementById('info').style.display ='none';</script> 

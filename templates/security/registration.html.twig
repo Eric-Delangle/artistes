@@ -8,9 +8,10 @@
 {% endblock %}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block body %}
-<div class="container font">
+<div class="container">
     <h1 class="titre center">Création de votre compte:</h1>
-        {{ form_start(form)}}
+    <br>
+        {{ form_start(form, {'attr': {'class': 'placeho'}})}}
          {{ form_row(form.firstName, {'attr': {'placeholder': "Votre prénom"}})}} 
          {{ form_row(form.lastName, {'attr': {'placeholder': "Votre nom"}})}} 
          {{ form_row(form.location, {'attr': {'placeholder': "Votre ville"}})}}
@@ -23,10 +24,10 @@
         <!-- captcha -->
         <!-- Notre boite de vérification -->
         
-        <div class="g-recaptcha" data-sitekey=""></div> 
+        <div class="g-recaptcha" data-sitekey="6LdDO7wUAAAAAGdJHeLw21WKSVXEqVChyrpoWYvQ"></div> 
         
         <!-- fin captcha -->
-       
+        <br>
         <button type="submit" class="btn btn-success">Valider</button>
         {{ form_end(form)}}
 </div>

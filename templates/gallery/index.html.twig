@@ -7,7 +7,7 @@
 <div class="container font">
         <h1 class="center titre">Vos galerie(s)</h1>
         <br>
-    <table class="table">
+    <table class="table placeho">
         <thead>
             <tr>
                 
@@ -26,7 +26,7 @@
                    
                     <td>{{ gallery.name }}</td>
                     <td>         
-                        <a class=" btn btn-info" href="{{ path('gallery_edit', {'id': gallery.id}) }}">Gérer cette galerie</a>
+                        <a class=" btn btn-info placeho" href="{{ path('gallery_edit', {'id': gallery.id}) }}">Gérer cette galerie</a>
                         
                     </td>
                 </tr>
@@ -41,7 +41,7 @@
          
         </tbody>
     </table>
-    <a class="btn btn-success" href="{{ path('gallery_new', {'id': app.user.id}) }}">Créer une nouvelle galerie</a>
+    <a class="btn btn-success placeho" href="{{ path('gallery_new', {'id': app.user.id}) }}">Créer une nouvelle galerie</a>
     
 </div>
     

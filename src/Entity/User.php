@@ -116,7 +116,12 @@ class User implements UserInterface, \Serializable
      */
     private $messages;
 
-   
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description2;
+
+    
 
 
     public function __construct()
@@ -140,14 +145,14 @@ class User implements UserInterface, \Serializable
 
  // modifier la méthode getRoles
     public function getRoles()
-                                                                                                                               {
-                                                                                                                                   if ($this->niveau == 2)
-                                                                                                                                   return ['ROLE_ADMIN'];
-                                                                                                                               elseif ($this->niveau == 1)
-                                                                                                                                   return ['ROLE_USER'];
-                                                                                                                               else
-                                                                                                                                   return [];
-                                                                                                                               }
+                                                                                                                                                          {
+                                                                                                                                                              if ($this->niveau == 2)
+                                                                                                                                                              return ['ROLE_ADMIN'];
+                                                                                                                                                          elseif ($this->niveau == 1)
+                                                                                                                                                              return ['ROLE_USER'];
+                                                                                                                                                          else
+                                                                                                                                                              return [];
+                                                                                                                                                          }
 
     public function setRoles(array $roles)
     {
@@ -364,6 +369,18 @@ class User implements UserInterface, \Serializable
             return $this;
         }
 
-    
+        public function getDescription2(): ?string
+        {
+            return $this->description2;
+        }
+
+        public function setDescription2(?string $description2): self
+        {
+            $this->description2 = $description2;
+
+            return $this;
+        }
+
+
 
 }

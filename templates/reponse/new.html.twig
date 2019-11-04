@@ -5,9 +5,9 @@
 {% block body %}
 <div class="container"> 
     <h1 class="center">Votre réponse</h1>
-
+<br>
     {{ include('reponse/_form.html.twig') }}
 
-    <a class="btn btn-info" href="{{ path('message_index', {'id': app.user.id}) }}">Retour à vos messages</a>
+    <a class="btn btn-info placeho" href="{{ path('message_index', {'id': app.user.id}) }}">Retour à vos messages</a>
 </div>
 {% endblock %}

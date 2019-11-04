@@ -6,7 +6,7 @@
     <h1 class="center titre">Vos messages {{ app.user.firstName|title }}</h1>
     <br>
 <div class="container font"> 
-    <table class="table">
+    <table class="table placeho">
         <thead>
             <tr>
                 <th>Expéditeur</th>
@@ -25,7 +25,7 @@
                 <td>{{ message.message }}</td>
                 <td>{{ message.postedAt ? message.postedAt|date('d-m-Y- H:i') : '' }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ path('message_show', {'id': message.id}) }}">Lire</a>
+                    <a class="btn btn-info placeho" href="{{ path('message_show', {'id': message.id}) }}">Lire</a>
                 </td>
             </tr>
         {% else %}
@@ -35,13 +35,13 @@
         {% endfor %}
         </tbody>
     </table>
-    <a class="btn btn-success" href="{{ path('message_new', {'id': app.user.id}) }}">Ecrire un message</a>
+    <a class="btn btn-success placeho" href="{{ path('message_new', {'id': app.user.id}) }}">Ecrire un message</a>
 
     <!-- div des reponses -->
     
     <h1 class="center">Vos conversations</h1>
     <br>
-    <table class="table">
+    <table class="table placeho">
         <thead>
             <tr>
                 <th>Expéditeur</th>
@@ -58,7 +58,7 @@
                 <td>{{ message.message }}</td>
                 <td>{{ message.postedAt ? message.postedAt|date('d-m-Y- H:i') : '' }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ path('reponse_showRep', {'id': message.id}) }}">Lire</a>
+                    <a class="btn btn-info placeho" href="{{ path('reponse_showRep', {'id': message.id}) }}">Lire</a>
                 </td>
             </tr>
         {% else %}

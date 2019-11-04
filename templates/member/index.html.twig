@@ -5,25 +5,39 @@
     <div class="container center">
       <h1 class="titre">Bienvenue <span >{{ app.user.firstName|title }}</span> dans votre espace personnel.</h1>
       <div><img src="{{ asset(['images/artisticWorks/', app.user.avatar]|join) }}" class="images" alt="avatar"></div>
-      <p class="font">Vous êtes inscrit dans la &nbsp;(les) catégorie(s) suivante(s):</p>
-    
+      <p class="font bleu">Vous êtes inscrit dans la &nbsp;(les) catégorie(s) suivante(s):</p>
       <p class="font"> 
         {% for categorie in app.user.categories %}
+        {% if loop.first != true %}
+        ,
+        {% endif %}
           <td>{{ categorie.name }}</td>
         {% endfor %} </p>
-    
+
+       <p class="font bleu">A propos de vous: </p>
+       <p class="font">{{ app.user.description2 }}</p>
     </div>
     
-    <div class=" center font">
+    <div class="center font">
   
-    <a href="{{ path('gallery_index', {'id': app.user.id}) }}" class="btn btn-info">Gerer vos galeries</a>
-    <a href="{{ path('message_index', {'id': app.user.id}) }}" class="btn btn-info">Messagerie</a>
-    <a href="{{ path('user_edit', {'id': app.user.id}) }}" class="btn btn-info">Modifier votre profil</a>
+    <a href="{{ path('gallery_index', {'id': app.user.id}) }}" class="btn btn-info placeho">Gérer vos galeries</a>
+    <a href="{{ path('message_index', {'id': app.user.id}) }}" class="btn btn-info placeho"> Messagerie<div id="infoMess">{% for message in app.user.messages %}
+      {% if loop.first != true %}
+      ,
+      {% endif %}
+      {% if message %}
+        {{ message.expediteur.firstName }}
+       
+      {% endif %}
+    {% endfor %} </div></a>
+    <a href="{{ path('user_edit', {'id': app.user.id}) }}" class="btn btn-info placeho">Modifier votre profil</a>
 
     </div>
 <!--fin titre et slogan-->
+
 <script>document.getElementById('inscription').style.display ='none';</script>
 <script>document.getElementById('connexion').style.display ='none';</script>
+
  {% if  app.user.niveau == 2 %}
   <script>document.getElementById('admin').style.display ='block';</script>
  {% else %}

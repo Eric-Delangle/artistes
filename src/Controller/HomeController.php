@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Message;
 use App\Entity\Category;
 use App\Repository\UserRepository;
 use App\Repository\CategoryRepository;
@@ -11,14 +12,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Config\Loader\LoaderInterface;
 
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
@@ -58,6 +59,7 @@ class HomeController extends AbstractController
         //je récupere le repository des users et je vais checher ses infos
         $repositoryCat = $this->getDoctrine()->getRepository(Category::class);
         $repositoryUser = $this->getDoctrine()->getRepository(User::class);
+        $repositoryMess = $this->getDoctrine()->getRepository(Message::class);
         $user = $repositoryUser->findAll();
         // la je vais chercher ses catégories
 
@@ -68,12 +70,11 @@ class HomeController extends AbstractController
 
         $data = $serializer->serialize($user, 'json',
         
-        ['attributes' => ['id', 'firstName', 'lastName', 'location', 'categories' =>['name']]]
+        ['attributes' => ['id', 'firstName', 'lastName', 'location', 'categories' =>['name'], 'messages' =>['message']]]
         );
         json_encode($data);
       
-        dump($data);
-     
+     dump($data);
     
        // Création du fichier json user
 

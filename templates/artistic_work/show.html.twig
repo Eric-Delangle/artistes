@@ -5,8 +5,8 @@
 {% block body %}
     <h1 class="center">Votre image</h1>
     <br>
-<div class="container font">
-    <table class="table">
+<div class="container">
+    <table class="table placeho">
         <tbody>
             <tr>
                 <th>Nom:</th>
@@ -27,9 +27,9 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('gallery_index', {'id': app.user.id}) }}">Retour à vos galeries</a>
+    <a class="btn btn-primary placeho" href="{{ path('gallery_index', {'id': app.user.id}) }}">Retour à vos galeries</a>
 
-    <a class="btn btn-success" href="{{ path('artistic_work_edit', {'id': artistic_work.id}) }}">Modifier ses informations</a>
+    <a class="btn btn-success placeho" href="{{ path('artistic_work_edit', {'id': artistic_work.id}) }}">Modifier ses informations</a>
 
     {{ include('artistic_work/_delete_form.html.twig') }}
     </div>

@@ -12,6 +12,10 @@ body {
   font-family: milkshake, century,arial !important;
 }
 
+.placeho {
+  font-family: century, arial;
+}
+
 #burger {
   display: none;
 }
@@ -211,6 +215,12 @@ height: auto;
   justify-content: space-around;
 }
 
+#infoMess {
+  
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 50%;
+}
 /* --  ==== MEDIAQUERIES ====  -- */
 
 

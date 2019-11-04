@@ -1,5 +1,5 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'class': 'placeho'}}) }}
 
     {{ form_widget(form) }}
-    <button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+    <button class="btn btn-success placeho">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}

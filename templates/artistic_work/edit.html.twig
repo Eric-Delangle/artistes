@@ -3,12 +3,13 @@
 {% block title %}Mise à jour de l'images{% endblock %}
 
 {% block body %}
-<div class="container font">
+<div class="container">
     <h1 class="center">Mise à jour de votre image</h1>
+    <br>
 
     {{ include('artistic_work/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a class="btn btn-primary" href="{{ path('gallery_index', {'id':app.user.id}) }}">Retour à la liste</a>
+    <a class="btn btn-primary placeho" href="{{ path('gallery_index', {'id':app.user.id}) }}">Retour à la liste</a>
 
 </div>
    

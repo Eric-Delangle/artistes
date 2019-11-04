@@ -3,12 +3,13 @@
 {% block title %}Modification{% endblock %}
 
 {% block body %}
-<div class="container font"> 
+<div class="container"> 
     <h1 class="center titre">Modification de vos informations</h1>
+    <br>
 <div class="container liens_crud"> 
     {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('member') }}" class="btn btn-info">retour dans votre espace</a>
+    <a href="{{ path('member') }}" class="btn btn-info placeho">retour dans votre espace</a>
 
     {{ include('user/_delete_form.html.twig') }}
     </div>
