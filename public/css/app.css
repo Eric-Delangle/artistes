@@ -176,6 +176,10 @@ height: auto;
   color: #0b88db;
 }
 
+.black {
+  color: #000000;
+}
+
 #mentions a:hover {
   color: #000000;
   text-decoration: none;
