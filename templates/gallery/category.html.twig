@@ -3,57 +3,68 @@
 {% block title %}Galleries{% endblock %}
 
 {% block body %}
+    
+
 <div class="container font galerie"> 
         
         <h1 class="center titre">Vous visitez les galeries de la catégorie {{ category.name }}.</h1>
-           
-               
-           
-
     {% for gallerie in galleries %}
-  
-    <br>
-       <div class="center fontDiv font_titres flex">
-           <div> 
-                <p class="titres">Nom de la gallerie</p>
-             
-                <p>{{ gallerie.name }}</p>
+       
+       
+          
+            <br>
+            <div class="center fontDiv font_titres flex">
+                <div> 
+                    <p class="titres">Nom de la gallerie</p>
+                
+                    <p>{{ gallerie.name }}</p>
+                </div>
+                <div>
+                    <p class="titres">Membre</p>
+                    
+                        {{ gallerie.user.firstName|title}}
+                    
+                        {{ gallerie.user.lastName|title }}
+                </div>
+                <div>
+                    <p class="titres">Ville</p>
+                    
+                        {{ gallerie.user.location|title }}
+                </div>
             </div>
-            <div>
-                <p class="titres">Membre</p>
-                
-                    {{ gallerie.user.firstName|title}}
-                
-                    {{ gallerie.user.lastName|title }}
-            </div>
-            <div>
-                <p class="titres">Ville</p>
-                
-                    {{ gallerie.user.location|title }}
-            </div>
-        </div>
-               <p class="titres center">Oeuvres</p>
-               <br>
-               <div class="fontDiv font_titres galerie center"> 
-                <!-- l'array sur lequel je dois boucler c'est gallery.artisticWorks -->
-                {% for artisticWork in gallerie.artisticWorks %}
-                
-                    <p><img src=" {{ asset(['images/artisticWorks/', artisticWork.picture]|join) }} " class="images" alt="oeuvre"></p>
+                    <p class="titres center">Oeuvres</p>
                     <br>
-                    <p>{{ artisticWork.name }}:</p>
-                    <p>{{ artisticWork.description }}</p>
-                   
-                {% endfor %}
-            </div>
-            <div class="center"> 
-                <a class="btn btn-success placeho" href="{{ path('message_newUserMess', {'id': gallerie.user.id}) }}">Envoyer un message à {{ gallerie.user.firstName|title}}</a>
-                <a class="btn btn-info placeho" href="{{ path('public_show', {'id': gallerie.user.id}) }}">Voir son profil</a>
-            </div>
-            <hr style="height: 5px;">
-    {% endfor %}
-    <div class="pagination center">
+                    <div class="fontDiv font_titres galerie center"> 
+                    <!-- l'array sur lequel je dois boucler c'est gallery.artisticWorks -->
+                    
+                    {% for artisticWork in gallerie.artisticWorks %}
+                    
+                        <p><img src=" {{ asset(['images/artisticWorks/', artisticWork.picture]|join) }} " class="images" alt="oeuvre"></p>
+                        <br>
+                        <p>{{ artisticWork.name }}:</p>
+                        <p>{{ artisticWork.description }}</p>
+                       
+                    {% endfor %}
+            
+                </div>
+                <div class="center"> 
+                    <a class="btn btn-success placeho" href="{{ path('message_newUserMess', {'id': gallerie.user.id}) }}">Envoyer un message à {{ gallerie.user.firstName|title}}</a>
+                    <a class="btn btn-info placeho" href="{{ path('public_show', {'id': gallerie.user.id}) }}">Voir son profil</a>
+                </div>
+                <hr style="height: 5px;">
+
+       
+      {% else %}
+             <p class="center">Mais aucune galerie n'a encore été crée dans cette catégorie</p>
+       
+ {% endfor %}
+    
+       
+           
+      <div class="pagination center">
         {{ knp_pagination_render (galleries)}}
     </div>
+    
 </div>
 
  <script>document.getElementById('pas_vu').style.display ='block';</script>
