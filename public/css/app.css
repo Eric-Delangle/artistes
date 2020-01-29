@@ -32,6 +32,11 @@ button {
   font-size: 1.5em;
 }
 
+.arial {
+  font-family: arial;
+  font-size: 0.9em;
+}
+
 .fontDiv {
   font-size: 0.8em;
 }

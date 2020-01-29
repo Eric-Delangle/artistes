@@ -34,6 +34,11 @@ class Category
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+    
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Gallery", mappedBy="category")
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
@@ -81,5 +86,25 @@ class Category
     
     public function __toString() {
         return (string) $this->getName();
+    }
+
+    /**
+     * Get the value of slug
+     */ 
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set the value of slug
+     *
+     * @return  self
+     */ 
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }

@@ -28,13 +28,14 @@ class PublicProfileController extends AbstractController
 
     // la au click je veux le profil du membre
      /**
-     * @Route("/user/{id}", name="public_show", methods={"GET"})
+     * @Route("/public_show/{slug}", name="public_show", methods={"GET"})
      */
-    public function show(UserRepository $userRepo, User $user, CategoryRepository $categoryRepo, GalleryRepository $galleryRepo)
+     
+    public function show($slug, User $user, UserRepository $userRepo, CategoryRepository $categoryRepo, GalleryRepository $galleryRepo)
     {
         return $this->render('public_profile/show.html.twig', [
       
-            'users' => $userRepo->findBy(['id' => $user]), 
+            'users' => $userRepo->findOneBySlug(['slug' => $slug]), 
             'categories' => $categoryRepo, 
             'gallery' => $galleryRepo->findBy(['user' => $user]),   
         ]);

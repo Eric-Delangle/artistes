@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Gallery;
 use App\Entity\Category;
 use App\Form\GalleryType;
+use Cocur\Slugify\Slugify;
 use App\Entity\ArtisticWork;
 use App\Form\GalleryNewType;
 use App\Repository\UserRepository;
@@ -39,7 +40,7 @@ class GalleryController extends AbstractController
 
     // ici je tente d'envoyer la bonne galerie au click sur la categorie voulue
     /**
-     * @Route("/category/{id}", name="gallery_category", methods={"GET"}, requirements={"id": "\d+"})
+     * @Route("/category/{slug}", name="gallery_category", methods={"GET"})
      */
     public function category(Request $request, PaginatorInterface $paginator, Category $category, GalleryRepository $galleryRepository)
      {
@@ -59,12 +60,15 @@ class GalleryController extends AbstractController
     public function new(Request $request, User $user, CategoryRepository $catRepo): Response
     {
         $gallery = new Gallery();
+        $slugify = new Slugify();
         $form = $this->createForm(GalleryType::class, $gallery);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->addFlash('success', 'Votre galerie a bien été crée!');
             $gallery->setUser($user);
+            $slug = $slugify->slugify($gallery->getName());
+            $gallery->setSlug($slug);
             $em = $this->getDoctrine()->getManager();
             $em->persist($gallery);
             $em->flush();
@@ -83,11 +87,13 @@ class GalleryController extends AbstractController
      */
     public function edit(Request $request, Gallery $gallery): Response
     {
-     
+        $slugify = new Slugify();
         $form = $this->createForm(GalleryType::class, $gallery);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $slug = $slugify->slugify($gallery->getName());
+            $gallery->setSlug($slug);
             $this->addFlash('success', 'Votre galerie a bien été mise à jour!');
             $this->getDoctrine()->getManager()->flush();
            
@@ -101,16 +107,17 @@ class GalleryController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/show/{id}", name="gallery_showUser", methods={"GET"})
+        //la au click je veux la galerie du membre
+   /**
+     * @Route("/show/{slug}", name="gallery_showUser", methods={"GET"})
      */
-    public function show(Gallery $gallery): Response
-    {
+     public function show($slug, Gallery $gallery): Response
+     {
+       
+         return $this->render('gallery/show.html.twig', [
       
-        return $this->render('gallery/show.html.twig', [
-     
-         'gallery'=>$gallery,
-        ]);
-    }
+          'gallery'=>$gallery,
+         ]);
+     }
     
 }

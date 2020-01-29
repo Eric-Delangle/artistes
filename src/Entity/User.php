@@ -68,6 +68,11 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=255)
      * @Groups({"group1"})
      */
     private $location;
@@ -144,15 +149,14 @@ class User implements UserInterface, \Serializable
     }
 
  // modifier la méthode getRoles
-    public function getRoles()
-                                                                                                                                                          {
-                                                                                                                                                              if ($this->niveau == 2)
-                                                                                                                                                              return ['ROLE_ADMIN'];
-                                                                                                                                                          elseif ($this->niveau == 1)
-                                                                                                                                                              return ['ROLE_USER'];
-                                                                                                                                                          else
-                                                                                                                                                              return [];
-                                                                                                                                                          }
+    public function getRoles() {
+        if ($this->niveau == 2)
+            return ['ROLE_ADMIN'];
+        elseif ($this->niveau == 1)
+            return ['ROLE_USER'];
+        else
+            return [];
+     }
 
     public function setRoles(array $roles)
     {
@@ -301,6 +305,7 @@ class User implements UserInterface, \Serializable
             $this->email,
             $this->firstName,
             $this->lastName,
+            $this->slug,
             $this->password,
             $this->location,
             $this->registeredAt,
@@ -319,6 +324,7 @@ class User implements UserInterface, \Serializable
             $this->email,
             $this->firstName,
             $this->lastName,
+            $this->slug,
             $this->password,
             $this->location,
             $this->registeredAt,
@@ -381,6 +387,23 @@ class User implements UserInterface, \Serializable
             return $this;
         }
 
+        /**
+         * Get the value of slug
+         */ 
+        public function getSlug()
+        {
+            return $this->slug;
+        }
 
+        /**
+         * Set the value of slug
+         *
+         * @return  self
+         */ 
+        public function setSlug($slug)
+        {
+            $this->slug = $slug;
 
+            return $this;
+        }
 }

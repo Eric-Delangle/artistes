@@ -5,25 +5,12 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Message;
 use App\Entity\Category;
-use App\Repository\UserRepository;
-use App\Repository\CategoryRepository;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\Common\Annotations\AnnotationReader;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Serializer\Annotation\Groups;
-
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
-use Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer;
 
 class HomeController extends AbstractController
 {
@@ -70,7 +57,7 @@ class HomeController extends AbstractController
 
         $data = $serializer->serialize($user, 'json',
         
-        ['attributes' => ['id', 'firstName', 'lastName', 'location', 'categories' =>['name'], 'messages' =>['message']]]
+        ['attributes' => ['id', 'firstName', 'lastName', 'slug', 'location', 'categories' =>['name'], 'messages' =>['message']]]
         );
         json_encode($data);
       

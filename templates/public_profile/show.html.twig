@@ -1,33 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil{% endblock %}
+{% block title %}Profil de {{ users.firstName|title }} {% endblock %}
 
 {% block body %}
 <br>
 <div class="container font"> 
     
-        {% for user in users %}
-       <h1 class="center titre">Profil de {{ user.firstName|title }}</h1>
        
-       <p class="center"><span class="bleu">Avatar: </span><img src="{{ asset(['images/artisticWorks/', user.avatar]|join) }}" class="images" ></p>
+       <h1 class="center titre">Profil de {{ users.firstName|title }}</h1>
+       
+       <p class="center"><span class="bleu">Avatar: </span><img src="{{ asset(['images/artisticWorks/', users.avatar]|join) }}" class="images" ></p>
        <br>
        <div class="profil"> 
             <div> 
-                <p><span class="bleu">Email: </span> {{ user.email }}</p>
+                <p><span class="bleu">Email: </span> <span class="arial">{{ users.email }}</span></p>
                
             
-                <p><span class="bleu">Prénom: </span>{{ user.firstName|title }}</p>
+                <p><span class="bleu">Prénom: </span><span class="arial">{{ users.firstName|title }}</span></p>
              
             
-                <p><span class="bleu">Nom: </span>{{ user.lastName|title }}</p>
+                <p><span class="bleu">Nom: </span><span class="arial">{{ users.lastName|title }}</span></p>
                 
             
-                <p><span class="bleu">Ville: </span>{{ user.location|title }}</p>
+                <p><span class="bleu">Ville: </span><span class="arial">{{ users.location|title }}</span></p>
             </div>
            <br>
            <div> 
                 <p><span class="bleu">Catégorie(s):</span></p>
-                    <p>{% for categorie in user.categories %}
+                    <p class="arial">{% for categorie in users.categories %}
                             {% if loop.first != true %}
                             ,
                             {% endif %}
@@ -36,21 +36,21 @@
                     </p>
            </div>
         </div>
-        {% if user.description2 %}
+        {% if users.description2 %}
         <div>            
             <p class="center bleu">A propos de moi: </p>
-            <p class="center">{{ user.description2 }}</p>
+            <p class="center arial">{{ users.description2 }}</p>
         </div>
         {% endif %}
         <br>
         <p class="center"><span class="bleu">Galerie(s):</span></p>
         <br>
                 <div class="profil_galeries"> 
-                    
+                  
                     {% if gallery %}
                         {% for gallerie in gallery %}
                             <p>{{ gallerie.name }}</p>
-                            <a class="btn btn-info placeho" href="{{ path('gallery_showUser', {'id': gallerie.id}) }}">Voir la galerie</a>
+                            <a class="btn btn-info placeho" href="{{ path('gallery_showUser', {'slug': gallerie.slug}) }}">Voir la galerie</a>
                             {% endfor %}
                             <br>
                         {% else %}
@@ -61,8 +61,8 @@
                 <br>
             
                 
-                <p class="center"><a class="btn btn-success placeho" href="{{ path('message_newUserMess', {'id': user.id}) }}">Envoyer un message</a></p>  
-        {% endfor %}   
+                <p class="center"><a class="btn btn-success placeho" href="{{ path('message_newUserMess', {'id': users.id}) }}">Envoyer un message</a></p>  
+  
 </div>
 <script>document.getElementById('pas_vu').style.display ='block';</script>
 {% endblock %}

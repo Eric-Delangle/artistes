@@ -42,6 +42,11 @@ class Gallery
      */
     private $artisticWorks;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->artisticWorks = new ArrayCollection();
@@ -98,5 +103,17 @@ class Gallery
 
     public function __toString() {
         return (string) $this->getName();
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }

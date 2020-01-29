@@ -34,15 +34,7 @@ class Main
     this.map.initMap();
   }
 }
-/*
-class MainMess
- {
-  constructor() {
-    this.messag = new Mess();
-    this.messag.signalMess();
-  }
-}
-*/
+
 // création de la classe Gmap
 class Gmap 
 { 
@@ -94,7 +86,7 @@ class Gmap
               let preNom = prenom.ucFirst();
               let nom = req[i]["lastName"];
               let Nom = nom.ucFirst();
-
+              let slug = req[i]["slug"];
               let rep = req[i]['categories'];
                   let cat = '';
                       for (let j= 0; j < rep.length;j++) { 
@@ -143,9 +135,8 @@ class Gmap
                  this.categorie.innerHTML = "Catégorie(s): " + cat;
                         
                   // fonction qui afficher le lien
-                  this.profil.innerHTML = "<span class='btn btn-success' style='cursor:pointer;'>Profil</span>" ;    
-                  let member = req[i]['id'];
-                  document.getElementById("profil").onclick = function(){window.location="http://127.0.0.1:8000/user/" + member;};
+                  this.profil.innerHTML = "<span class='btn btn-success' style='cursor:pointer;'>Profil</span>" ;   
+                  document.getElementById("profil").onclick = function(){window.location="http://127.0.0.1:8000/public_show/" + slug;};
                     map.addListener('click', ()=> {
                       this.infoMember.style.display = "none";
                   })       
@@ -158,52 +149,7 @@ class Gmap
     }
 }
 
-// tests
-/*
-class Mess
-{
-  
-  constructor() {
-    this.infoM = document.getElementById("infoMess");
-    this.user = user;
-  }
-   
-      signalMess() { 
-        $(document).ready(function(){
-         
-          $.ajax({
-              url : 'members.json',
-              type : 'GET',
-              dataType : 'json',
-        
-              success:function(response){
-                console.log(response);
 
-                $.each(response, function(i) {
-          
-                  let mess = response[i]["messages"];
-                  console.log(mess[0]["id"]);
-                  console.log(user);
-                  console.log(mess[0][i]['message']);
-                  
-                    if(mess[0][i]['message'].length >= 1) { 
-                      document.getElementById("infoMess").style.display = "block";
-                    } 
-            });
-          }        
-        });
-    })
-  }
-}
-*/
-
-
- /*
-  const markerCluster = new MarkerClusterer(map, markers,{
-    maxZoom: 15,
-    imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-  });// fin de ma variable de regroupement de markers
-*/
 
 
 

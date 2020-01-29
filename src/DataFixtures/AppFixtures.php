@@ -10,7 +10,7 @@ use App\Entity\ArtisticWork;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Cocur\Slugify\Slugify;
 
 
 class AppFixtures extends Fixture
@@ -18,13 +18,16 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker =  Faker\Factory::create('fr_FR');
+        $slugify = new Slugify();
         $categories = [];
         $users = [];
         
         $cat = ['Dessin', 'Peinture', 'Sculpture', 'Modelage', 'Art-numérique', 'Photographie'];
         foreach($cat as $name){
             $category = new Category();
-            $category->setName($name);          
+            $category->setName($name); 
+            $slug = $slugify->slugify($category->getName());
+            $category->setSlug($slug);   
             $manager->persist($category);
             $categories[] = $category;
         }
@@ -61,6 +64,8 @@ class AppFixtures extends Fixture
                 for ($g = 0; $g <= 1; $g++) {
                     $gallery = new Gallery();
                     $gallery->setName($faker->name);
+                    $slug = $slugify->slugify($gallery->getName());
+                    $gallery->setSlug($slug);
                     $gallery->setCategory($category);
                     $gallery->setUser($user);
                     $manager->persist($gallery);

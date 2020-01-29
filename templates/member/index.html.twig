@@ -11,11 +11,11 @@
         {% if loop.first != true %}
         ,
         {% endif %}
-          <td>{{ categorie.name }}</td>
+          <td><span class="arial">{{ categorie.name }}</span></td>
         {% endfor %} </p>
 
        <p class="font bleu">A propos de vous: </p>
-       <p class="font">{{ app.user.description2 }}</p>
+       <p class="font"><span class="arial">{{ app.user.description2 }}</span></p>
     </div>
     
     <div class="center font">
