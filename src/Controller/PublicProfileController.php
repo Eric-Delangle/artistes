@@ -34,7 +34,7 @@ class PublicProfileController extends AbstractController
     public function show($slug, User $user, UserRepository $userRepo, CategoryRepository $categoryRepo, GalleryRepository $galleryRepo)
     {
         return $this->render('public_profile/show.html.twig', [
-      
+            'user' => $user,
             'users' => $userRepo->findOneBySlug(['slug' => $slug]), 
             'categories' => $categoryRepo, 
             'gallery' => $galleryRepo->findBy(['user' => $user]),   

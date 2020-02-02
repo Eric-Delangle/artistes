@@ -61,7 +61,7 @@ class HomeController extends AbstractController
         );
         json_encode($data);
       
-     dump($data);
+     
     
        // Création du fichier json user
 

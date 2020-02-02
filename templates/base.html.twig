@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <!-- CSS PERSO -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}"/>
         
         <!-- CSS ET JS BOOTSTRAP-->
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -92,7 +92,7 @@
          <footer class="foot">
             <div id="mentions" class="jumbotron text-center font mentions" style="background-color:  grey">
                 <p class=""><a href="{{ asset('images/CGU.pdf') }}">Mentions légales</a></p>
-                <p><i class="far fa-envelope"></i><a href="{{ path('message_newUserMess', {'id': 1  }) }}"> Nous contacter</a></p>
+                <p><i class="far fa-envelope"></i><a href="{{ path('contact_us') }}"> Nous contacter</a></p>
                 <h5 class="mentions">Retrouvez nous sur Facebook</h5>
                 <ul style="list-style: none;">
                     <li>
@@ -114,7 +114,8 @@
          <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
          <!-- fin chargement React -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-         <script src="{{ asset('build/app.js') }}"></script>
+         <script src="{{ asset('/js/app.js') }}"></script>
+         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
          <script>document.getElementById('info').style.display ='none';</script> 
         {% block javascripts %}{% endblock %}
         {% if app.user %}

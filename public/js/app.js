@@ -16,14 +16,12 @@
 // DEBUT DE MES SCRIPTS
 /*
 // apparition du message d'inscription au bout de 5 secondes
-
   window.onload = function() {
     setTimeout(function()
     {
       document.getElementById("info").style.display = "block";
     }, 5000);
   }
-
 */
 
 // dans cet objet j'appele toutes mes classes
@@ -49,11 +47,11 @@ class Gmap
   }
   
     initMap() {
-      let france = {lat: 47.513354, lng: 1.888334};
+      let france = {lat: 45.413340, lng: 0.788320};
      
       let map = new google.maps.Map(document.getElementById('map'), {
      
-      zoom: 6.2,
+      zoom: 6.0,
       center: france
     });
   
@@ -148,8 +146,3 @@ class Gmap
       });
     }
 }
-
-
-
-
-

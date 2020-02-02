@@ -115,7 +115,7 @@ class GalleryController extends AbstractController
      {
        
          return $this->render('gallery/show.html.twig', [
-      
+            //'user' => $user,
           'gallery'=>$gallery,
          ]);
      }

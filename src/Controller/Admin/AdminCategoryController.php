@@ -3,11 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Form\UserType;
 use App\Entity\Category;
 use App\Form\CategoryType;
-use App\Form\UserType;
-use App\Repository\CategoryRepository;
+use Cocur\Slugify\Slugify;
 use App\Repository\UserRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,10 +36,13 @@ class AdminCategoryController extends AbstractController
     public function new(Request $request): Response
     {
         $category = new Category();
+        $slugify = new Slugify();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $slug = $slugify->slugify($category->getName());
+            $category->setSlug($slug);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
             $entityManager->flush();
