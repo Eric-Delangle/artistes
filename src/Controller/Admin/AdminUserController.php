@@ -3,11 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Form\UserType;
 use App\Entity\Category;
 use App\Form\CategoryType;
-use App\Form\UserType;
-use App\Repository\CategoryRepository;
 use App\Repository\UserRepository;
+use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,15 +22,21 @@ class AdminUserController extends AbstractController
     /**
      * @Route("/admin/users", name="user_index", methods={"GET"})
      */
-    public function indexUsers(UserRepository $userRepository): Response
+    public function indexUsers(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
     {
+    $totalusers =  $userRepository->findAll();
+   foreach ($totalusers as $tout) {
+      $cb = $tout.id;
+   }
+    dump($cb);
         return $this->render('admin/users/users.html.twig', [
-           
-            'users' => $userRepository->findAll(),
-        ]);
+            'users' => $paginator->paginate(
+                $userRepository->findAll(),
+             $request->query->getInt('page' , 1 ),
+             4),   
+           ]);    
     }
 
-  
 
     /**
      * @Route("/admin/users", name="user_show", methods={"GET"})

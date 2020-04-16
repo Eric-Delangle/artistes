@@ -1,0 +1,407 @@
+@font-face {
+  font-family: 'milkshake';
+  src: url('/fonts/milkshake400.otf') format('otf'),
+  url('/fonts/milkshake400.ttf') format('ttf'),
+  url('/fonts/milkshake_400-webfont.woff2') format('woff2'),
+  url('/fonts/milkshake_400-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: milkshake, century,arial !important;
+}
+
+.placeho {
+  font-family: century, arial;
+}
+
+#burger {
+  display: none;
+}
+button {
+  display: none;
+}
+
+#menu {
+  width: 100%;
+    height: 100px;
+}
+
+.font {
+  font-size: 1.5em;
+}
+
+.arial {
+  font-family: arial;
+  font-size: 0.9em;
+}
+
+.fontDiv {
+  font-size: 0.8em;
+}
+
+.font_titres {
+  font-size: 1em;
+}
+
+body a { 
+  color: #0b88db;
+}
+
+body a:hover {
+  color: grey;
+}
+
+.slogan {
+  color: #ffffff;
+}
+
+.liens_galeries {
+  width: 200px;
+  height: auto;
+}
+/* test de sass pour faire du scss */
+#pas_vu {
+  font-size: 1.5em;
+  color: grey;
+}
+
+
+/* message d'inscription js */
+#info {
+  display: none;
+  position: absolute;
+  width: 25%;
+  height: 100px;
+  line-height: 4;
+  font-family: milkshake, arial, time;
+  color: #ffffff;
+  font-size: 1.5em;
+  border-radius: 50%;
+  background-color:  rgb(69, 126, 231);
+  text-align: center;
+  z-index: 9;
+  top: 150px;
+  left: 30px;
+  box-shadow: 30px 30px 6px rgb(82, 80, 80);
+}
+
+#info:hover {
+  background-color:  #3552fc;
+}
+
+#info a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.liens:hover { 
+  color: #62940c;
+}
+/* reduire la taille des images a l'affichage */
+.images {
+width: 300px;
+height: auto;
+}
+
+#map {
+    width: 100%;
+    height: 800px;
+    z-index:9;
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.align_image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* infos membre sur la carte */
+#infoMember {
+  font-family: sans-serif,arial;
+  position: absolute;
+  width: 25%;
+  height: auto;
+  border-radius: 10px 10px 10px 10px;
+  background-color: grey;
+  border: 2.5px solid #ffff;
+  color: #ffff;
+  left: 35px;
+  top: 700px;
+  display: none;
+  z-index: 10;
+}
+
+.no_point {
+  list-style: none;
+  margin: 10px auto;
+}
+  
+#pas_vu {
+  display: none;
+}
+
+.liens_crud {
+  justify-content: space-around;
+}
+
+/* affichage des images dans les galeries */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  height: auto;
+}
+
+.titres {
+  width: 250px;
+  height: auto;
+  text-align: center;
+  background-color: #72bcec;
+}
+
+.titre {
+  margin-top: 40px;
+}
+
+.blue_color {
+  color: #0b88db;
+  text-shadow: 10px 10px 3px rgb(82, 80, 80);
+}
+
+.bleu {
+  color: #0b88db;
+}
+
+.black {
+  color: #000000;
+}
+
+#mentions a:hover {
+  color: #000000;
+  text-decoration: none;
+}
+
+#mentions a {
+  margin: 30px auto;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.mentions p {
+  color: #ffffff;
+}
+
+.tr_pad {
+  padding: 0 20px;
+}
+
+.foot {
+  margin: 20px auto;
+}
+
+.profil {
+  display: flex;
+  justify-content: space-around;
+}
+
+.profil_galeries {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.galerie {
+  justify-content: space-around;
+}
+
+#infoMess {
+  
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 50%;
+}
+/* --  ==== MEDIAQUERIES ====  -- */
+
+
+@media all and (max-width: 1024px) {  /* ipad */
+
+  .flex {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+  }
+
+  #info {
+    display: none;
+    position: absolute;
+    width: 60%;
+    height: 70px;
+    line-height: 4;
+    font-family: milkshake, arial, time;
+    color: #ffffff;
+    font-size: 1em;
+    background-color: rgb(69, 126, 231);
+    text-align: center;
+    z-index: 1;
+    top: 400px;
+    left: 150px;
+  }
+  
+  /* BURGER */
+  .lab {
+    margin-top: -15px;
+  }
+  #menu input + label {
+    position: fixed!important;
+    top: 45px;
+    right: 40px;
+    height: 60px;
+    width: 35px;
+    z-index: 5;
+  }
+  
+  #menu input + label span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    margin-top: -1px;
+    left: 0;
+    display: block;
+    background: #020304!important;
+    transition: .5s;
+  }
+  
+  #menu input + label span:first-child {
+    top: 3px;
+  }
+  
+  #menu input + label span:last-child {
+    top: 16px;
+  }
+  
+  #menu label:hover {
+    cursor: pointer;
+  }
+  
+  #menu input:checked + label span {
+    opacity: 0;
+    top: 50%;
+  }
+  
+  #menu input:checked + label span:first-child {
+    opacity: 1;
+    transform: rotate(405deg);
+  }
+  
+  #menu input:checked + label span:last-child {
+    opacity: 1;
+    transform: rotate(-405deg);
+  }
+  
+  #menu input ~ nav {
+    background: #ffffff;
+    position: fixed!important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 3;
+    transition: .5s;
+    transition-delay: .5s;
+    overflow: hidden;
+  }
+  #menu input ~ nav > ul {
+    text-align: center;
+    position: fixed;
+    flex-direction: column;
+    top: 10%;
+    height: auto;
+    margin: 0 32%;
+  }
+  
+  #menu input ~ nav > ul > li {
+    opacity: 0;
+    transition: .5s;
+    transition-delay: 0s;
+  }
+  
+  #menu input ~ nav > ul > li > a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #020304!important;
+    font-weight: 700;
+    font-family: Roboto,sans-serif;
+    font-size: 1.5em;
+    display: block;
+    padding: 39px;
+  }
+  
+  #menu input:checked ~ nav {
+    height: 50%;
+    transition-delay: 0s;
+  }
+  #menu input:checked ~ nav > ul > li {
+    opacity: 1;
+    transition-delay: .5s;
+  }
+  /* FIN BURGER */
+  #pas_vu {
+    margin-top: 10px;
+  }
+}
+  @media all and (max-device-width: 480px) {  /* smartphone */
+   
+  input:checked ~ nav {
+    height: auto;
+    transition-delay: 0s;
+  }
+  
+  element.style {
+    display: block;
+  }
+
+  #info {
+    display: none;
+    position: absolute;
+    width: 80%;
+    height: 70px;
+    line-height: 4;
+    font-family: milkshake, arial, time;
+    color: #ffffff;
+    font-size: 1em;
+    background-color: rgb(69, 126, 231);
+    text-align: center;
+    z-index: 1;
+    top: 50px;
+    left: 10px;
+  }
+
+  #map {
+    width: 90%;
+    height: 500px;
+    margin: 0 auto;
+}
+
+  /* infos membre sur la carte */
+  #infoMember {
+ 
+    width: 25%;
+    height: auto;
+    left: 135px;
+    top: 10px;
+    display: none;
+    z-index: 10;
+  }
+}
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYXBwLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG9DQUFvQztBQUN4QyIsImZpbGUiOiJhcHAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI0MSwgMjEzLCAxNzUpO1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ==*/

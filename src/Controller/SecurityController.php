@@ -38,8 +38,8 @@ class SecurityController extends Controller
 
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
-            $slug = $slugify->slugify($user->getFirstName().''.$user->getLastName());
-            $user->setSlug($slug);
+           // $slug = $slugify->slugify($user->getFirstName().''.$user->getLastName());
+           // $user->setSlug($slug);
             $user->getCategories(new Category());
             $user->setRegisteredAt(new \DateTime());
             $user->setNiveau(1);

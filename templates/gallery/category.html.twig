@@ -10,7 +10,7 @@
         <h1 class="center titre">Vous visitez les galeries de la catégorie {{ category.name }}.</h1>
     {% for gallerie in galleries %}
        
-       
+       {% if gallerie.artisticWorks  is not empty %} 
           
             <br>
             <div class="center fontDiv font_titres flex">
@@ -52,7 +52,7 @@
                     <a class="btn btn-info placeho" href="{{ path('public_show', {'slug': gallerie.user.slug}) }}">Voir son profil</a>
                 </div>
                 <hr style="height: 5px;">
-
+     {% endif %} 
        
       {% else %}
              <p class="center">Mais aucune galerie n'a encore été crée dans cette catégorie</p>

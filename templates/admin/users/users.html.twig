@@ -3,9 +3,13 @@
 {% block title %}Index des utilisateurs{% endblock %}
 
 {% block body %}
+
 <div class="container placeho">
     <h1 class="center">Tableau des utilisateurs</h1>
 <br>
+{# nombre d'utilisateurs #}
+<p>{{ users| length}}</p>
+
     <table border style="text-align:center;">
         <thead>
             <tr>
@@ -65,4 +69,7 @@
 <script>document.getElementById('deconnexion').style.display ='block';</script>
 <script>document.getElementById('espace_membre').style.display ='block';</script>
 <script>document.getElementById('admin').style.display ='none';</script>
+<div class="pagination center">
+        {{ knp_pagination_render (users)}}
+    </div>
 {% endblock %}

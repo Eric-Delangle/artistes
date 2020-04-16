@@ -48,37 +48,36 @@ class HomeController extends AbstractController
         $repositoryUser = $this->getDoctrine()->getRepository(User::class);
         $repositoryMess = $this->getDoctrine()->getRepository(Message::class);
         $user = $repositoryUser->findAll();
+
         // la je vais chercher ses catégories
 
-       
+            $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
 
-  $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
- 
 
-        $data = $serializer->serialize($user, 'json',
-        
-        ['attributes' => ['id', 'firstName', 'lastName', 'slug', 'location', 'categories' =>['name'], 'messages' =>['message']]]
-        );
-        json_encode($data);
-      
-     
-    
-       // Création du fichier json user
+            $data = $serializer->serialize($user, 'json',
+            
+            ['attributes' => ['id', 'firstName', 'lastName', 'slug', 'location', 'categories' =>['name'], 'messages' =>['message']]]
+            );
+            json_encode($data);
+            
 
-        // Nom du fichier à créer
-        $members = 'members.json';
 
-        // Ouverture du fichier
-        $members = fopen($members, 'w+');
+            // Création du fichier json user
 
-        // Ecriture dans le fichier
-        fwrite($members, $data);
-        
+            // Nom du fichier à créer
+            $members = 'members.json';
 
-        // Fermeture du fichier
-        fclose($members);
-               
-                return $this->render('home/home.html.twig');
+            // Ouverture du fichier
+            $members = fopen($members, 'w+');
+
+            // Ecriture dans le fichier
+            fwrite($members, $data);
+            
+
+            // Fermeture du fichier
+            fclose($members);
+                    
+                    return $this->render('home/home.html.twig');
 
         }
     }
