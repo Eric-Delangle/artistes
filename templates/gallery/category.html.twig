@@ -7,7 +7,7 @@
 
 <div class="container font galerie"> 
         
-        <h1 class="center titre">Vous visitez les galeries de la catégorie {{ category.name }}.</h1>
+        <h1 class="center titre">Vous visitez les galeries de la catégorie {{ category.slug }}.</h1>
     {% for gallerie in galleries %}
        
        {% if gallerie.artisticWorks  is not empty %} 
@@ -43,7 +43,8 @@
                         <br>
                         <p>{{ artisticWork.name }}:</p>
                         <p>{{ artisticWork.description }}</p>
-                       
+
+      
                     {% endfor %}
             
                 </div>
@@ -53,19 +54,23 @@
                 </div>
                 <hr style="height: 5px;">
      {% endif %} 
-       
+
       {% else %}
              <p class="center">Mais aucune galerie n'a encore été crée dans cette catégorie</p>
        
  {% endfor %}
-    
-       
-           
-      <div class="pagination center">
-        {{ knp_pagination_render (galleries)}}
-    </div>
-    
+        
+
+                   <div class="pagination center">
+                    
+                        {{ knp_pagination_render (galleries)}}
+                </div>
+
+
+  
+
 </div>
+
 
  <script>document.getElementById('pas_vu').style.display ='block';</script>
 {% endblock %}

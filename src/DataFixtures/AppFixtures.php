@@ -22,12 +22,12 @@ class AppFixtures extends Fixture
         $categories = [];
         $users = [];
         
-        $cat = ['Dessin', 'Peinture', 'Sculpture', 'Modelage', 'Art-numérique', 'Photographie'];
+        $cat = ['Dessin', 'Peinture', 'Sculpture', 'Modelage', 'Art-numérique', 'Photographie', 'Céramique', 'Mosaique', 'Collectionneur' ];
         foreach($cat as $name){
             $category = new Category();
             $category->setName($name); 
             $slug = $slugify->slugify($category->getName());
-            $category->setSlug($slug);   
+            $category->setSlug($name);   
             $manager->persist($category);
             $categories[] = $category;
         }
@@ -68,21 +68,24 @@ class AppFixtures extends Fixture
                     $gallery->setName($faker->name);
                     $slug = $slugify->slugify($gallery->getName());
                     $gallery->setSlug($slug);
-                    $gallery->setCategory($category);
+                    $gallery->setCategory( $category);
                     $gallery->setUser($user);
                     $manager->persist($gallery);
                     
                     for ($a = 1; $a <= 2; $a++) {
+                      
                         $artWork = new ArtisticWork();
                         $artWork->setName($faker->name);
                         $artWork->setGallery($gallery);
                         $artWork->setSlug($faker->name);
+                        $artWork->setCategory($category);
                         $artWork->setPicture('avatarDefaut.jpg');
                         $artWork ->setPictureFile(new File('public/images/artisticWorks/avatarDefaut.jpg'));
                         $artWork ->setDescription($faker->text);
                         $artWork->setCreatedAt($faker ->dateTimeBetween($startDate = '-6 months', $endDate = 'now'));
                         $artWork->setUpdatedAt($faker ->dateTimeBetween($startDate = '-6 months', $endDate = 'now'));
                         $manager->persist($artWork);
+                        
                     }
                    
                 }

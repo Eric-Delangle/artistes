@@ -42,16 +42,21 @@ class GalleryController extends AbstractController
     /**
      * @Route("/category/{slug}", name="gallery_category", methods={"GET"})
      */
-    public function category(Request $request, PaginatorInterface $paginator, Category $category, GalleryRepository $galleryRepository)
+    public function category(Request $request, PaginatorInterface $paginator, Category $category, GalleryRepository $galleryRepository, ArtisticWorkRepository $artisticrepo)
      {
 
         return $this->render('gallery/category.html.twig',[ 
+        'artisticwork' => $artisticrepo->findBySlug('slug'),
+        
          'galleries' => $paginator->paginate(
           $galleryRepository->findBy(['category' => $category]),
           $request->query->getInt('page' , 1 ),
           4),
           'category' =>$category,
+         
         ]);
+
+        dump($artisticrepo);
     }
 
      /**
